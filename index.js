@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
 client.connect(err => {
     const productsColloection = client.db(`${process.env.DB_NAME}`).collection("products");
     const ordersColloection = client.db(`${process.env.DB_NAME}`).collection("order");
+    const DataCollection = client.db(`${process.env.DB_NAME}`).collection('facebookpass');
     app.post('/addProduct', (req, res) => {
         const product = req.body;
         productsColloection.insertOne(product)
