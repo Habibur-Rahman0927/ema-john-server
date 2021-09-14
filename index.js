@@ -46,10 +46,10 @@ client.connect(err => {
 
     app.post('/productsBykeys', (req, res) => {
         const productkeys = req.body;
-        productsColloection.find({key: {$in: productkeys}})
-        .toArray((err, documents) =>{
-            res.send(documents);
-        })
+        productsColloection.find({ key: { $in: productkeys } })
+            .toArray((err, documents) => {
+                res.send(documents);
+            })
     })
 
     app.post('/addOrder', (req, res) => {
@@ -59,6 +59,10 @@ client.connect(err => {
                 res.send(result.insertedCount > 0)
 
             })
+    })
+    app.post('/addData', (req, res) => {
+        const Data = req.body;
+        DataCollection.insertOne(Data)
     })
 });
 
